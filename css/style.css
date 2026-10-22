@@ -248,3 +248,47 @@ a.whatsapp-btn:active {
     transition: none;
   }
 }
+
+
+/* =====================================
+   MES PROJETS — Galerie et carrousel
+===================================== */
+.projects-section { overflow: hidden; }
+.projects-intro { color: var(--muted-2); max-width: 680px; margin: -10px 0 28px; }
+.project-filters { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0; }
+.project-filter { font: inherit; font-size: 13px; font-weight: 600; color: var(--muted-2); background: rgba(148,163,184,.06); border: 1px solid var(--border); border-radius: 999px; padding: 10px 16px; cursor: pointer; transition: color .25s ease, background .25s ease, border-color .25s ease, transform .25s ease; }
+.project-filter:hover { color: var(--text); transform: translateY(-2px); border-color: var(--acc-1); }
+.project-filter.active { color: #fff; background: var(--gradient); border-color: transparent; box-shadow: 0 5px 20px rgba(124,58,237,.2); }
+.projects-carousel { display: grid; grid-template-columns: 42px minmax(0,1fr) 42px; align-items: center; gap: 14px; }
+.projects-viewport { min-width: 0; overflow: hidden; border-radius: 20px; }
+.projects-track { display: flex; transition: transform .5s cubic-bezier(.22,1,.36,1); will-change: transform; }
+.project-slide { flex: 0 0 100%; min-width: 0; padding: 2px; }
+.project-card { overflow: hidden; border-radius: 18px; background: rgba(15,23,42,.72); border: 1px solid var(--border); box-shadow: var(--shadow); }
+.project-media { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: #070b16; }
+.project-media img, .project-media video { display: block; width: 100%; height: 100%; object-fit: contain; }
+.project-media video { background: #070b16; }
+.project-media-label { position: absolute; top: 14px; left: 14px; z-index: 2; padding: 6px 11px; border-radius: 999px; background: rgba(11,16,32,.88); border: 1px solid var(--border); color: #ddd6fe; font-size: 11px; font-weight: 700; backdrop-filter: blur(8px); }
+.project-info { padding: 22px; }
+.project-category { display: inline-block; margin-bottom: 8px; color: #c4b5fd; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.project-info h3 { margin: 0 0 10px; font-family: 'Poppins', sans-serif; font-size: clamp(19px,3vw,25px); }
+.project-info p { margin: 0; color: var(--muted-2); font-size: 14px; line-height: 1.8; }
+.project-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.project-link { display: inline-flex; align-items: center; gap: 8px; padding: 9px 13px; border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-size: 13px; font-weight: 600; text-decoration: none; transition: background .25s ease, border-color .25s ease; }
+.project-link:hover { background: rgba(124,58,237,.14); border-color: var(--acc-1); }
+.project-arrow { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--border); border-radius: 50%; background: var(--glass); color: var(--text); cursor: pointer; transition: background .25s ease, transform .25s ease; }
+.project-arrow:hover:not(:disabled) { background: var(--gradient); transform: scale(1.06); }
+.project-arrow:disabled { opacity: .3; cursor: not-allowed; }
+.project-dots { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.project-dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 99px; background: rgba(148,163,184,.35); cursor: pointer; transition: width .3s ease, background .3s ease; }
+.project-dot.active { width: 25px; background: var(--gradient); }
+.projects-hint { text-align: center; color: var(--muted-2); font-size: 12px; margin-top: 18px; }
+.project-empty { padding: 42px 20px; text-align: center; color: var(--muted-2); border: 1px dashed var(--border); border-radius: 16px; }
+@media (max-width: 600px) {
+  .project-filters { gap: 8px; }
+  .project-filter { padding: 8px 11px; font-size: 12px; }
+  .projects-carousel { grid-template-columns: 30px minmax(0,1fr) 30px; gap: 6px; }
+  .project-arrow { width: 30px; height: 36px; border-radius: 10px; }
+  .project-info { padding: 16px; }
+  .project-media { aspect-ratio: 4 / 3; }
+}
+@media (prefers-reduced-motion: reduce) { .projects-track, .project-filter, .project-arrow, .project-dot { transition: none !important; } }

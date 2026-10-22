@@ -54,6 +54,7 @@
           <ul class="nav-list">
             <li><a href="#apropos">À propos</a></li>
             <li><a href="#experience">Expérience</a></li>
+            <li><a href="#projets">Mes projets</a></li>
             <li><a href="#formation">Formation</a></li>
             <li><a href="#competences">Compétences</a></li>
             <li><a href="#langues">Langues</a></li>
@@ -233,6 +234,31 @@
 
 
           </div>
+        </div>
+      </section>
+
+
+      <!-- Mes projets -->
+      <section id="projets" class="section projects-section">
+        <div class="container">
+          <h2 class="section-title reveal">Mes projets</h2>
+          <p class="projects-intro reveal">Découvrez une sélection de mes réalisations en développement web, applications, automatisation et marketing digital.</p>
+
+          <div class="project-filters reveal" id="projectFilters" aria-label="Catégories de projets">
+            <button class="project-filter active" type="button" data-filter="Tous" aria-pressed="true">Tous</button>
+            <button class="project-filter" type="button" data-filter="Web" aria-pressed="false">Développement Web</button>
+            <button class="project-filter" type="button" data-filter="Applications" aria-pressed="false">Applications</button>
+            <button class="project-filter" type="button" data-filter="Automatisation" aria-pressed="false">Automatisation</button>
+            <button class="project-filter" type="button" data-filter="Marketing" aria-pressed="false">Marketing &amp; Design</button>
+          </div>
+
+          <div class="projects-carousel reveal" aria-label="Galerie de projets">
+            <button class="project-arrow project-prev" type="button" aria-label="Projet précédent"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="projects-viewport"><div class="projects-track" id="projectsTrack" aria-live="polite"></div></div>
+            <button class="project-arrow project-next" type="button" aria-label="Projet suivant"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+          <div class="project-dots" id="projectDots" aria-label="Navigation entre les projets"></div>
+          <p class="projects-hint"><i class="fa-regular fa-hand-pointer"></i> Utilisez les flèches pour découvrir les projets.</p>
         </div>
       </section>
 
