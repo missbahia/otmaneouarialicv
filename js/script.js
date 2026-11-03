@@ -243,52 +243,166 @@ document.addEventListener('DOMContentLoaded', () => {
   if (y) y.textContent = new Date().getFullYear();
 
   // Contact form validation (client-side)
-  const form = document.querySelector('.contact-form');
-  if (form) {
-    const fields = {
-      name: form.querySelector('#name'),
-      email: form.querySelector('#email'),
-      message: form.querySelector('#message')
+  
+// ================= CONTACT FORM =================
+
+const form = document.getElementById('contactForm');
+
+if (form) {
+
+    const nameInput = form.querySelector('#name');
+    const emailInput = form.querySelector('#email');
+    const messageInput = form.querySelector('#message');
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const status = document.getElementById('formStatus');
+
+    let isSubmitting = false;
+
+    // Display errors
+    const showError = (input, message = '') => {
+
+        const error = input.parentElement.querySelector('.error');
+
+        if (error) {
+            error.textContent = message;
+        }
+
+        input.setAttribute(
+            'aria-invalid',
+            message ? 'true' : 'false'
+        );
+
     };
-    const errors = form.querySelectorAll('.error');
 
-    const showError = (input, msg) => {
-      const small = input.parentElement.querySelector('.error');
-      if (small) small.textContent = msg || '';
-      input.setAttribute('aria-invalid', msg ? 'true' : 'false');
+    // Email validation
+    const validateEmail = (email) => {
+
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
     };
 
-    const validateEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    // Validate all fields
+    const validateForm = () => {
 
-    const validate = () => {
-      let ok = true;
-      const nameVal = fields.name.value.trim();
-      const emailVal = fields.email.value.trim();
-      const msgVal = fields.message.value.trim();
-      if (nameVal.length < 2) { showError(fields.name, 'Veuillez entrer au moins 2 caractères.'); ok = false; } else showError(fields.name);
-      if (!validateEmail(emailVal)) { showError(fields.email, 'Veuillez entrer un email valide.'); ok = false; } else showError(fields.email);
-      if (msgVal.length < 10) { showError(fields.message, 'Votre message doit contenir au moins 10 caractères.'); ok = false; } else showError(fields.message);
-      return ok;
+        let valid = true;
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const message = messageInput.value.trim();
+
+        // Name
+        if (name.length < 2) {
+
+            showError(
+                nameInput,
+                'Veuillez entrer votre nom complet.'
+            );
+
+            valid = false;
+
+        } else {
+
+            showError(nameInput);
+
+        }
+
+        // Email
+        if (!validateEmail(email)) {
+
+            showError(
+                emailInput,
+                'Veuillez entrer une adresse email valide.'
+            );
+
+            valid = false;
+
+        } else {
+
+            showError(emailInput);
+
+        }
+
+        // Message
+        if (message.length < 10) {
+
+            showError(
+                messageInput,
+                'Votre message doit contenir au moins 10 caractères.'
+            );
+
+            valid = false;
+
+        } else {
+
+            showError(messageInput);
+
+        }
+
+        return valid;
+
     };
 
-    form.addEventListener('input', (e) => {
-      const target = e.target;
-      if (!(target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement)) return;
-      // lightweight per-field validation
-      if (target.id === 'name' && target.value.trim().length >= 2) showError(target);
-      if (target.id === 'email' && validateEmail(target.value.trim())) showError(target);
-      if (target.id === 'message' && target.value.trim().length >= 10) showError(target);
+    // Live validation
+    form.addEventListener('input', (event) => {
+
+        const input = event.target;
+
+        if (input === nameInput &&
+            nameInput.value.trim().length >= 2) {
+
+            showError(nameInput);
+
+        }
+
+        if (input === emailInput &&
+            validateEmail(emailInput.value.trim())) {
+
+            showError(emailInput);
+
+        }
+
+        if (input === messageInput &&
+            messageInput.value.trim().length >= 10) {
+
+            showError(messageInput);
+
+        }
+
     });
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (validate()) {
-        const btn = form.querySelector('button[type="submit"]');
-        if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Envoi...'; }
-        // Submit to FormSubmit
-        form.submit();
-      }
+    // Submit form
+    form.addEventListener('submit', (event) => {
+
+        if (isSubmitting) {
+            event.preventDefault();
+            return;
+        }
+
+        if (!validateForm()) {
+
+            event.preventDefault();
+
+            status.textContent =
+                'Veuillez corriger les erreurs avant l’envoi.';
+
+            return;
+
+        }
+
+        // Allow normal submission to FormSubmit
+        isSubmitting = true;
+
+        submitBtn.disabled = true;
+
+        submitBtn.innerHTML =
+            '<i class="fa-solid fa-spinner fa-spin"></i> Envoi en cours...';
+
+        status.textContent =
+            'Votre message est en cours d’envoi...';
+
     });
-  }
+
+}
 });
 

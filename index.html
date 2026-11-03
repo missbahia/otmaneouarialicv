@@ -157,7 +157,7 @@
             <div class="timeline-item reveal">
               <div class="timeline-dot"></div>
               <div class="timeline-content glass">
-                <h3>AIDE CUISINIER — COCO FRUTTI</h3>
+                <h3>CUISINIER — COCO FRUTTI</h3>
                 <span class="meta">2025 — 2025 • Magog, QC</span>
                 <p>Aider À Préparer Les Aliments (laver, Couper, Ranger).</p>
                 <p>Aider Le Cuisinier Pendant Le Service.</p>
@@ -337,46 +337,140 @@
         </div>
       </section>
 
-      <!-- Contact -->
-      <section id="contact" class="section">
-        <div class="container">
-          <h2 class="section-title reveal">Contact</h2>
-          <form class="contact-form card glass reveal" novalidate method="POST" action="https://formsubmit.co/missbahia15@gmail.com">
-            <div class="form-row">
-              <label for="name">Nom complet</label>
-              <input id="name" name="name" type="text" placeholder="Votre nom" required minlength="2" />
-              <small class="error" aria-live="polite"></small>
-            </div>
-            <div class="form-row">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="vous@email.com" required />
-              <small class="error" aria-live="polite"></small>
-            </div>
-            <div class="form-row">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" placeholder="Votre message" required minlength="10"></textarea>
-              <small class="error" aria-live="polite"></small>
-            </div>
-            <!-- FormSubmit options -->
-            <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="/merci.html" />
-            <div class="form-actions">
-              <button type="submit" class="btn primary">
-                <i class="fa-solid fa-paper-plane"></i> Envoyer
-              </button>
-            </div>
-            <p class="form-note">service messagerie Ai generator 2026 by otm05.</p>
-          </form>
+      
+<!-- ================= CONTACT ================= -->
 
-          <div class="social reveal">
-            <a href="#" aria-label="LinkedIn" class="social-link"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="#" aria-label="GitHub" class="social-link"><i class="fa-brands fa-github"></i></a>
-            <a href="#" aria-label="Email" class="social-link"><i class="fa-solid fa-envelope"></i></a>
-          </div>
+<section id="contact" class="section">
+
+    <div class="container">
+
+        <h2 class="section-title reveal">Contact</h2>
+
+        <form
+            class="contact-form card glass reveal"
+            id="contactForm"
+            method="POST"
+            action="https://formsubmit.co/missbahia15@gmail.com"
+            novalidate
+        >
+
+            <!-- FormSubmit Configuration -->
+
+            <input type="hidden" name="_subject"
+                value="Nouveau message depuis le portfolio - Otmane Ouariali">
+
+            <input type="hidden" name="_template" value="table">
+
+            <input type="hidden" name="_captcha" value="true">
+
+            <!-- Anti-spam honeypot -->
+            <input type="text" name="_honey"
+                style="display:none">
+
+            <!-- NAME -->
+
+            <div class="form-row">
+
+                <label for="name">Nom complet</label>
+
+                <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Votre nom complet"
+                    autocomplete="name"
+                    required
+                    minlength="2"
+                >
+
+                <small class="error" aria-live="polite"></small>
+
+            </div>
+
+            <!-- EMAIL -->
+
+            <div class="form-row">
+
+                <label for="email">Adresse email</label>
+
+                <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="vous@email.com"
+                    autocomplete="email"
+                    required
+                >
+
+                <small class="error" aria-live="polite"></small>
+
+            </div>
+
+            <!-- MESSAGE -->
+
+            <div class="form-row">
+
+                <label for="message">Votre message</label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="Écrivez votre message ici..."
+                    required
+                    minlength="10"
+                ></textarea>
+
+                <small class="error" aria-live="polite"></small>
+
+            </div>
+
+            <!-- SUBMIT -->
+
+            <div class="form-actions">
+
+                <button type="submit" class="btn primary">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    <span>Envoyer le message</span>
+
+                </button>
+
+            </div>
+
+            <p class="form-note" id="formStatus" aria-live="polite">
+                Votre message sera envoyé directement par email.
+            </p>
+
+        </form>
+
+        <!-- SOCIAL LINKS -->
+
+        <div class="social reveal">
+
+            <a href="#" aria-label="LinkedIn" class="social-link">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+
+            <a href="#" aria-label="GitHub" class="social-link">
+                <i class="fa-brands fa-github"></i>
+            </a>
+
+            <a href="mailto:missbahia15@gmail.com"
+               aria-label="Email"
+               class="social-link">
+
+                <i class="fa-solid fa-envelope"></i>
+
+            </a>
+
         </div>
-      </section>
+
+    </div>
+
+</section>
+
     </main>
 
     <footer class="footer">
